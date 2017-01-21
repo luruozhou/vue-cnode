@@ -2,7 +2,6 @@
   <div class="hello">
     <span>userInfo</span>
     <span class="userName">userName:{{userName}}</span>
-    <span v-on:click="toHome">点击回主页</span>
   </div>
 </template>
 
@@ -12,11 +11,6 @@
     data () {
       return {
         userName: 'lijingwen'
-      }
-    },
-    methods: {
-      toHome: function (event) {
-        Router.push({path:'/'})
       }
     }
   }

@@ -7,7 +7,6 @@ var webpack = require('webpack')
 var opn = require('opn')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
-var request = require('request');
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -16,18 +15,6 @@ var port = process.env.PORT || config.dev.port
 var proxyTable = config.dev.proxyTable
 
 var app = express()
-
-//转发cnode接口请求
-app.get(/.*/, function(req, res, next){
-  var remoteUrl = 'https://cnodejs.org';
-  if(req.path.match(/^\/api\/v1\/.+/)){
-    var url = remoteUrl + req.url;
-    req.pipe(request(url)).pipe(res);
-  }else{
-    next()
-  }
-
-});
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
