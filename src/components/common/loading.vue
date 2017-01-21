@@ -1,8 +1,14 @@
 <template>
-  <div class="hello">
-    <span>userInfo</span>
-    <span class="userName">userName:{{userName}}</span>
-    <span v-on:click="toHome">点击回主页</span>
+  <div class="loading running-loading pause">
+    <div class="inner-wrapper">
+      <span class="text">加载中, 请稍后...</span>
+      <div class='bullets'>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+    </div>
   </div>
 </template>
 
