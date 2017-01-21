@@ -8,6 +8,7 @@ import './util/base';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
+
 const router = new VueRouter(routerConfig)
 
 const app = new Vue({router}).$mount('#app')
