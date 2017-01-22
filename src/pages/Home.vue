@@ -25,15 +25,20 @@
         Router.push({path: '/user'})
       }
     },
-    mounted: function (e) {
+    created: function (e) {
       console.log(e, 11);
+      fetchData.getTopics('share', 1, 5)
+        .then(res=> {
+          console.log(res, 222)
+          this.artileList = res.data;
+        })
 
     },
     route: {
       data (transition) {
         fetchData.getTopics('share', 1, 5)
           .then(res=> {
-            console.log(res, 222)
+            console.log(res, 333)
             this.artileList = res.data;
           })
       }
