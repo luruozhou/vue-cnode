@@ -1,10 +1,7 @@
 <template>
-  <div class="hello">
-    <div>下边是子组件的内容</div>
-    <div>{{ msg }}</div>
-    <div>{{ uName }}</div>
-    <div>{{selfAttr}}</div>
-    <div @click="changeParentName">点击我改变父组件userName属性</div>
+  <div class="tab">
+    <div>当前的板块名：{{section}}</div>
+    <div @click="changeSection">点我改变section</div>
   </div>
 </template>
 
@@ -13,13 +10,15 @@
     name: 'child',
     data: function () {
       return {
-        selfAttr:'子组件自身的属性'
+        tabList:[]
       }
     },
-    props:['msg','uName'],
+    props:['section'],
     methods:{
-      changeParentName:function () {
-        this.$emit("bbb",{a:333,b:'test',newName:'name from child'});
+      changeSection:function () {
+        var arr=['ask','good','job','share','all'];
+        var i =parseInt(Math.random()*arr.length);
+        this.$emit('change',{sectionName:arr[i]})
       }
     }
   }
