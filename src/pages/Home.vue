@@ -18,7 +18,7 @@
     data: function () {
       return {
         userName: 'lijingwen',
-        section:'ask'  // good job
+        section:'all'  // good job
       }
     },
     methods: {
