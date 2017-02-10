@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <ul>
-      <li v-for="item in articleList"  v-on:click="toDetail(item)" >
+      <li v-for="item in articleList"  @click="toDetail" >
         <img  v-bind:src="item.author.avatar_url" alt="">
         <div class="titleContent">
           <h3><span v-if="item.top" class="top">置顶</span>{{item.title}}</h3>
@@ -17,10 +17,13 @@
 
 <script>
   import fetchData from '../util/fetchData';
+  import articleDetail from '../pages/ArticleDetail';
   var timeago = require("timeago.js");
+  
   export default {
     name: 'child',
     props: ['section'],
+    
     filters:{
       formatTime:function(time){
         var timeagoInstance = new timeago();
@@ -30,12 +33,16 @@
     },
     data: function () {
       return {
-        articleList: []
+        articleList: [],
+        article:"这是list传递的文章内容"
       }
     },
+    
     created: function(){
       var self = this;
       console.log("created");
+      // console.log(VueRouter);
+      // this.article="这是list传递的文章内容";
       fetchData.getTopics("",1,6)
         .then(res=>{
           self.articleList=res.data;
@@ -54,7 +61,7 @@
     methods: {
       toDetail:function(article){
         console.log(article+"ddddd");
-
+        Router.push({path:'/article'})
       }
     }
   }
