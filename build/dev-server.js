@@ -17,17 +17,6 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 
-//转发cnode接口请求
-app.get(/.*/, function(req, res, next){
-  var remoteUrl = 'https://cnodejs.org';
-  if(req.path.match(/^\/api\/v1\/.+/)){
-    var url = remoteUrl + req.url;
-    console.log(url);
-    req.pipe(request(url)).pipe(res);
-  }else{
-    next()
-  }
-});
 
 var compiler = webpack(webpackConfig)
 
@@ -53,6 +42,7 @@ Object.keys(proxyTable).forEach(function (context) {
   if (typeof options === 'string') {
     options = { target: options }
   }
+  console.log(context,options)
   app.use(proxyMiddleware(context, options))
 })
 
