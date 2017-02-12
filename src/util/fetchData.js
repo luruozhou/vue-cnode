@@ -11,7 +11,11 @@ export default {
   },
   login(accesstoken){
     let requestUrl = `/api/v1/accesstoken`;
-    return fetchData(requestUrl,"post",{accesstoken:"8f5dfb9a-ae41-4124-9476-53337f0d69c2"});
+    return fetchData(requestUrl,"post",{accesstoken:accesstoken});
+  },
+  userInfo(loginname){
+    let requestUrl = `/api/v1/user/${loginname}`;
+    return fetchData(requestUrl);
   }
 }
 

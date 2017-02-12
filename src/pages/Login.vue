@@ -24,14 +24,16 @@ export  default{
         login:function(){
             // 8f5dfb9a-ae41-4124-9476-53337f0d69c2
             var self=this;
-            localStorage.accesstoken=this.accesstoken;
-            console.log(localStorage.accesstoken);
+            // localStorage.accesstoken=this.accesstoken;
+            // console.log(localStorage.accesstoken);
             fetchData.login(this.accesstoken)
                 .then(res=>{
-                    // if(res.success){
-                    //     console.log(res)
-                    // }
-                    console.log(res);
+                    if(res.success){
+                        console.log(res);
+                        localStorage.accesstoken=this.accesstoken;
+                        localStorage.loginname=res.loginname;
+                        
+                    }
                 })
         }
     }

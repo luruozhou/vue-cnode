@@ -111,11 +111,11 @@
           .top{
             color: #f3f3f3;
             background-color:#80bd01;
-                font-size: 0.8rem;
-    display: inline-block;
-    padding: 0.2rem;
-    margin: 0 0.5rem 0 0;
-    border-radius: 0.15rem;
+            font-size: 0.8rem;
+            display: inline-block;
+            padding: 0.2rem;
+            margin: 0 0.5rem 0 0;
+            border-radius: 0.15rem;
           }
        }
        p{

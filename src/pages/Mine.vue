@@ -1,27 +1,37 @@
 <template>
-    <div class="min">
+    <div class="mine">
         <back></back>
         <div class="userIndex">
-            <img class="userImg" src="https://avatars.githubusercontent.com/u/17866189?v=3&s=120" alt="">
-            <p>MsCtrl0</p>
+            <img class="userImg" v-bind:src="user.avatar_url" alt="">
+            <p>{{user.loginname}}</p>
             <p class="userInf">
-                积分：5 注册时间：19小时前
+                积分：{{user.score}} 注册时间：{{user.create_at|resetTime}}
             </p>
         </div>
-        <div class="">
-            <div>主题</div>
-            <div>回复</div>
+        <div class="topics">
+            <!--v-bind:class="{active:section==tab.tabId}"-->
+            <div  v-for="recent in recents" @click="changeTopics(recent.recentId)"  v-bind:class="{active:now==recent.recentId}">
+                {{recent.recentName}}
+            </div>
         </div>
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            <li  class="item" v-for="item in user[now]" @click="()=>toDetail(item.id)">
+                <span class="title">
+                    {{item.title}}
+
+                </span>
+                <span class="time">
+                    {{item.last_reply_at|resetTime}}
+                </span>
+            </li>
         </ul>
     </div>
 </template>
 <script>
 import back from   '../components/back.vue';
 import fetchData from '../util/fetchData';
+var timeago = require("timeago.js");
+var timeagoInstance = new timeago();
 export  default{
     name:'mine',
     components:{
@@ -29,11 +39,38 @@ export  default{
     },
     data:function(){
         return{
-            accesstoken:"",
+            user:{},
+            recents:[
+                {recentId:"recent_topics",recentName:"主题"},
+                {recentId:"recent_replies",recentName:"回复"}
+            ],
+            now:"recent_topics"
         }
     },
+    filters:{
+        resetTime:function(time){
+            return timeagoInstance.format(time, 'zh_CN');
+        }
+    },
+    created:function(){
+        var self=this;
+        fetchData.userInfo(localStorage.loginname)
+            .then(res=>{
+                if(res.success){
+                    self.user=res.data;
+                    console.log(self.user);
+                }
+                
+            })
+    },
     methods:{
-
+        changeTopics:function(recentId){
+            this.now=recentId;
+            console.log(this.now);
+        },
+        toDetail:function(id){
+            Router.push({name:'article',params:{id:id}})
+        }
     }
 }
 </script>
@@ -60,5 +97,44 @@ p{
 .userInf{
     color:lighten($green,45%);
     font-size: 0.7rem;
+}
+.topics{
+   
+    div{
+        background-color: #eee;
+        border-bottom: 6px solid #eee;
+        padding:0.5rem 0;
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        box-sizing: border-box;
+        
+    }
+    .active{
+        border-bottom: 6px solid $green;
+    }
+}
+.item{
+    display: block;
+    margin: 0 1rem;
+    box-sizing: border-box;
+    border-bottom:1px  solid ;
+    padding:0.5rem 0;
+   &:nth-of-type(1){
+    padding-top:1rem; 
+   }
+    span{
+        display: inline-block;
+    }
+    .title{
+        overflow: hidden;
+        text-overflow:ellipsis; 
+        white-space:nowrap;
+        width: 75%;
+    }
+    .time{
+        text-align: right;
+        float: right;
+    }
 }
 </style>
