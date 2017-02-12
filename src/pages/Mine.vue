@@ -69,7 +69,7 @@ export  default{
             console.log(this.now);
         },
         toDetail:function(id){
-            Router.push({name:'article',params:{id:id}})
+            Router.push({name:'article',params:{id:id},query:{from:'/mine'}})
         }
     }
 }

@@ -1,5 +1,6 @@
 <template>
     <div class="article">
+        <h1 @click="back">back</h1>
         <article>
             <header>
                 <h3>{{article.title}}</h3>
@@ -28,34 +29,35 @@
     var timeago = require("timeago.js");
     var timeagoInstance = new timeago();
 
-    export default{
+    export default {
         name: 'article',
-        data () {
-            return{
-                article:{},
+        data() {
+            return {
+                article: {},
             }
         },
-        created:function(){
-            var self=this;
-            var id=this.$route.params.id;
+        created: function () {
+            var self = this;
+            console.log(this.$route)
+            var id = this.$route.params.id;
             fetchData.getTopicInfo(id)
-                .then(res=>{
-                    if(res.success){
-                        self.article=res.data;
+                .then(res => {
+                    if (res.success) {
+                        self.article = res.data;
                     }
                 })
         },
-        filters:{
-            resetTab:function(tab){
-                var tabList={
-                    ask:"问答",
-                    share:"分享",
-                    job:"招聘",
-                    good:"精华"
+        filters: {
+            resetTab: function (tab) {
+                var tabList = {
+                    ask: "问答",
+                    share: "分享",
+                    job: "招聘",
+                    good: "精华"
                 };
                 return tabList[tab];
             },
-            resetTime:function(time){
+            resetTime: function (time) {
                 return timeagoInstance.format(time, 'zh_CN');
             }
         },
@@ -66,8 +68,12 @@
         //     }
 
         // },
-        methods:{
-            
+        methods: {
+            back: function () {
+                console.log(111)
+                let from = this.$route.query.from || '/';
+                Router.push({ path: from })
+            }
         }
     }
 </script>
