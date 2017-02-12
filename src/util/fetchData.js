@@ -8,6 +8,10 @@ export default {
   getTopicInfo (tid){
     let requestUrl = `/api/v1/topic/${tid}`;
     return fetchData(requestUrl);
+  },
+  login(accesstoken){
+    let requestUrl = `/api/v1/accesstoken`;
+    return fetchData(requestUrl,"post",{accesstoken:"8f5dfb9a-ae41-4124-9476-53337f0d69c2"});
   }
 }
 

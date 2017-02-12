@@ -5,7 +5,8 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import routerConfig from './config/router-config'
 import './util/base';
-
+import './assets/base.scss';
+import './assets/reset.scss';
 Vue.use(VueResource);
 Vue.use(VueRouter);
 

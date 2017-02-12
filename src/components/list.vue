@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <ul>
-      <li v-for="item in articleList"  @click="toDetail" >
+      <li v-for="item in articleList"  @click="()=>toDetail(item.id)" >
         <img  v-bind:src="item.author.avatar_url" alt="">
         <div class="titleContent">
           <h3><span v-if="item.top" class="top">置顶</span>{{item.title}}</h3>
@@ -59,9 +59,9 @@
       }
     },
     methods: {
-      toDetail:function(article){
-        console.log(article+"ddddd");
-        Router.push({path:'/article'})
+      toDetail:function(id){
+        
+        Router.push({name:'article',params:{id:id}})
       }
     }
   }
@@ -69,9 +69,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.list{
-  font-family:"Microsoft YaHei"
-}
   h1, h2 {
     font-weight: normal;
   }

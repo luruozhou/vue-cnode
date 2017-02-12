@@ -1,7 +1,8 @@
 <template>
-  <div class="hello">
+  <div class="home">
     <tab :section="section" v-on:change="setSection"></tab>
     <list :section="section"></list>
+    <foot></foot>
   </div>
 </template>
 
@@ -9,11 +10,13 @@
 //  import fetchData from '../util/fetchData';
   import list from '../components/list.vue';
   import tab from '../components/tab.vue';
+  import foot from '../components/footer.vue';
   export default {
     name: 'home',
     components:{
       list,
-      tab
+      tab,
+      foot
     },
     data: function () {
       return {
@@ -23,29 +26,9 @@
     },
     methods: {
       setSection:function (data) {
-//        console.log(data);
         this.section=data.sectionName;
       }
     },
-//    created: function (e) {
-//      console.log(e, 11);
-//
-//      fetchData.getTopics('share', 1, 5)
-//        .then(res=> {
-//          console.log(res, 222)
-//          this.artileList = res.data;
-//        })
-//
-//    },
-//    route: {
-//      data (transition) {
-////        fetchData.getTopics('share', 1, 5)
-////          .then(res=> {
-////            console.log(res, 333)
-////            this.artileList = res.data;
-////          })
-//      }
-//    }
   }
 </script>
 

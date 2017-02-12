@@ -22,6 +22,7 @@ app.get(/.*/, function(req, res, next){
   var remoteUrl = 'https://cnodejs.org';
   if(req.path.match(/^\/api\/v1\/.+/)){
     var url = remoteUrl + req.url;
+    console.log(url);
     req.pipe(request(url)).pipe(res);
   }else{
     next()

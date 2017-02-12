@@ -1,6 +1,10 @@
 import Home from '../pages/Home.vue';
 import UserCenter from '../pages/UserCenter.vue';
 import ArticleDetail from '../pages/ArticleDetail.vue';
+import Login from '../pages/Login.vue';
+import Mine from '../pages/Mine.vue';
+import Publish from '../pages/Publish.vue';
+
 export default {
   mode: 'history',
   scrollBehavior (to, from, savedPosition) {
@@ -15,10 +19,25 @@ export default {
       path: '/', component: Home,
     },
     {
+      path: '/home', component: Home,
+    },
+    
+    {
       path: '/user', component: UserCenter,
     },
     {
-      path: '/articleDetail', component:ArticleDetail,
+      path: '/login', component:Login,
+    },
+    {
+      path: '/mine', component:Mine,
+    },
+    {
+      path: '/publish', component:Publish,
+    },
+    {
+      path: '/article/:id', 
+      name:'article',
+      component:ArticleDetail
     }
   ]
 }

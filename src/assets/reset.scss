@@ -1,0 +1,19 @@
+select{
+    text-transform: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    display: block;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+}
+textarea,input{
+    font-size: 1rem;
+    display: block;
+    box-sizing:border-box;
+    padding:0.5rem 0.3rem;
+    border-radius: 0.2rem;
+}

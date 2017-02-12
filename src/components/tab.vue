@@ -4,7 +4,7 @@
     <!--<div @click="changeSection222">点我改变section</div>-->
     <ul>
       <li @click="clickTab(tab)" v-for="tab in tabList" v-bind:class="{active:section==tab.tabId}">
-
+      
       {{tab.tabName}}
       </li>
     </ul>
