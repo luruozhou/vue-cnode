@@ -16,6 +16,18 @@ export default {
   userInfo(loginname){
     let requestUrl = `/api/v1/user/${loginname}`;
     return fetchData(requestUrl);
+  },
+  setRepliy(topic_id,accesstoken,content,reply_id){
+    let requestUrl = `/api/v1/topic/${topic_id}/replies`;
+    if(!reply_id){
+      return fetchData(requestUrl,"post",{accesstoken:accesstoken,content:content});
+    }else{
+      return fetchData(requestUrl,"post",{accesstoken:accesstoken,content:content,reply_id:reply_id});
+    }
+  },
+  ups(replyId,accesstoken){
+    let requestUrl = `/api/v1/reply/${replyId}/ups`;
+     return fetchData(requestUrl,"post",{accesstoken:accesstoken});
   }
 }
 
