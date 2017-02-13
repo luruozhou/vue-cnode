@@ -1,4 +1,4 @@
-<template>  
+<template>
     <ul class="footer" >
         <li @click="changePage(value.footId)" class="cell" v-for="value in foot">
             <span class="iconfont" v-html="value.footIcon"></span>
@@ -17,7 +17,7 @@
                     {footId:"publish",footName:"发表",footIcon:"&#xe62f;"},
                     {footId:"message",footName:"消息",footIcon:"&#xe613;"},
                     {footId:"mine",footName:"我的",footIcon:"&#xe653;"},
-                    
+
                 ]
 
             }
@@ -25,16 +25,16 @@
         methods:{
             changePage:function(pageId){
                 console.log(pageId)
-                
-                console.log(Router)
+
                 console.log(localStorage.accesstoken);
+                Router.push({path:'/mine'})
             }
         }
 
     }
 
 </script>
-<style scoped lang="scss"> 
+<style scoped lang="scss">
 $green:#80bd01;
 .footer{
     background-color: $green;
@@ -45,12 +45,12 @@ $green:#80bd01;
     position: fixed;
     bottom: 0;
     width: 100%;
-    box-sizing:border-box; 
+    box-sizing:border-box;
     left: 0;
 }
 .cell{
     float:left;
-    box-sizing:border-box; 
+    box-sizing:border-box;
     width: 25%;
     text-align: center;
     padding:0;

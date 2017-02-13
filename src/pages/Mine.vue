@@ -53,11 +53,14 @@ export  default{
         }
     },
     beforeCreate:function(){
-        console.log(Router);
-        // var loginname=localStorage.loginname;
+         var loginname=localStorage.loginname;
+         if(!loginname){
+             Router.push({path:'/login',query:{from:'/mine'}})
+         }
 
     },
     created:function(){
+        console.log(Router,'====')
         // if(loginname==undefined){
         //       Router.push({name:'login'})
         // }else{
@@ -72,7 +75,7 @@ export  default{
                     self.user=res.data;
                     console.log(self.user);
                 }
-                
+
             })
     },
     methods:{
@@ -111,7 +114,7 @@ p{
     font-size: 0.7rem;
 }
 .topics{
-   
+
     div{
         background-color: #eee;
         border-bottom: 6px solid #eee;
@@ -120,7 +123,7 @@ p{
         width: 50%;
         text-align: center;
         box-sizing: border-box;
-        
+
     }
     .active{
         border-bottom: 6px solid $green;
@@ -133,14 +136,14 @@ p{
     border-bottom:1px  solid ;
     padding:0.5rem 0;
    &:nth-of-type(1){
-    padding-top:1rem; 
+    padding-top:1rem;
    }
     span{
         display: inline-block;
     }
     .title{
         overflow: hidden;
-        text-overflow:ellipsis; 
+        text-overflow:ellipsis;
         white-space:nowrap;
         width: 75%;
     }

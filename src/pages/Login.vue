@@ -32,7 +32,8 @@ export  default{
                         console.log(res);
                         localStorage.accesstoken=this.accesstoken;
                         localStorage.loginname=res.loginname;
-                        
+                        let from = this.$route.query.from || '/';
+                        Router.push({path:from})
                     }
                 })
         }
@@ -47,7 +48,7 @@ $green:#80bd01;
 .center{
     margin-top: 50%;
     transform: translate(0,-50%);
-    
+
 }
 input{
     width:80%;
@@ -59,7 +60,7 @@ input{
     margin:0 auto;
     text-align: center;
     background-color:$green;
-    box-sizing:border-box; 
+    box-sizing:border-box;
     color:#ffffff;
     font-size: 1.1rem;
     padding:0.5rem 0.3rem;
