@@ -60,7 +60,7 @@ export  default{
 
     },
     created:function(){
-        console.log(Router,'====')
+        console.log(window.Router,'====')
         // if(loginname==undefined){
         //       Router.push({name:'login'})
         // }else{
