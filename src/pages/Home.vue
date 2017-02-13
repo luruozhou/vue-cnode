@@ -18,6 +18,10 @@
       tab,
       foot
     },
+    created:function(){
+      // console.log(Router)
+        // Router.push({name:"login"});
+    },
     data: function () {
       return {
         userName: 'lijingwen',

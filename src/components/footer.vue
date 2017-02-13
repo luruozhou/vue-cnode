@@ -25,6 +25,8 @@
         methods:{
             changePage:function(pageId){
                 console.log(pageId)
+                
+                console.log(Router)
                 console.log(localStorage.accesstoken);
             }
         }

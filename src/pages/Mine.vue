@@ -52,9 +52,21 @@ export  default{
             return timeagoInstance.format(time, 'zh_CN');
         }
     },
+    beforeCreate:function(){
+        console.log(Router);
+        // var loginname=localStorage.loginname;
+
+    },
     created:function(){
+        // if(loginname==undefined){
+        //       Router.push({name:'login'})
+        // }else{
+
+        // }
         var self=this;
-        fetchData.userInfo(localStorage.loginname)
+        var loginname=localStorage.loginname;
+        // console.log(Router)
+        fetchData.userInfo(loginname)
             .then(res=>{
                 if(res.success){
                     self.user=res.data;
