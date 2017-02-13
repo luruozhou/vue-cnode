@@ -27,7 +27,7 @@
                 console.log(pageId)
 
                 console.log(localStorage.accesstoken);
-                Router.push({path:'/mine'})
+                Router.push({path:"/"+pageId})
             }
         }
 

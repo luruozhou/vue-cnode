@@ -1,6 +1,5 @@
 <template>
     <div class="mine">
-        <back></back>
         <div class="userIndex">
             <img class="userImg" v-bind:src="user.avatar_url" alt="">
             <p>{{user.loginname}}</p>
@@ -25,17 +24,19 @@
                 </span>
             </li>
         </ul>
+        <foot></foot>
     </div>
 </template>
 <script>
 import back from   '../components/back.vue';
 import fetchData from '../util/fetchData';
+import foot from '../components/footer.vue';
 var timeago = require("timeago.js");
 var timeagoInstance = new timeago();
 export  default{
     name:'mine',
     components:{
-        back
+        foot
     },
     data:function(){
         return{

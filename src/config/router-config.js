@@ -4,6 +4,7 @@ import ArticleDetail from '../pages/ArticleDetail.vue';
 import Login from '../pages/Login.vue';
 import Mine from '../pages/Mine.vue';
 import Publish from '../pages/Publish.vue';
+import Message from '../pages/Message.vue';
 
 export default {
   mode: 'history',
@@ -33,6 +34,9 @@ export default {
     },
     {
       path: '/publish', component:Publish,
+    },
+    {
+      path: '/message', component:Message,
     },
     {
       path: '/article/:id', 

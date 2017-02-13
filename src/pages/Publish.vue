@@ -16,14 +16,16 @@
         <div class="item">
             <textarea placeholder="内容字数 30 字以上"></textarea>
         </div>
-        
+        <foot></foot>
     </div>
 </template>
 <script>
 import fetchData from '../util/fetchData';
+import foot from '../components/footer.vue';
 export  default{
     name:'publish',
     components:{
+        foot
     },
     data:function(){
         return{
