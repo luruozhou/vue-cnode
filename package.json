@@ -10,6 +10,9 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "http-proxy": "^1.17.0",
+    "koa": "^2.3.0",
+    "koa-static-cache": "4.1.1",
     "request": "^2.79.0",
     "timeago.js": "^2.0.5",
     "vue": "^2.1.0",

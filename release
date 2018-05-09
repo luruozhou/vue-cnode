@@ -1,0 +1,13 @@
+echo 'git pull'
+
+git pull origin master || exit
+
+echo 'npm installing...'
+
+npm install || exit
+
+echo 'building...'
+
+npm run build || exit
+
+pm2 startOrReload pm2.json
